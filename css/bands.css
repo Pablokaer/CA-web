@@ -1,0 +1,94 @@
+/* ===== BANDS PAGE STYLES ===== */
+.bands-section {
+    padding: 5rem 5%;
+    background-color: var(--preto-claro);
+}
+
+.bands-section h1 {
+    margin-top: 10px;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--branco);
+    position: relative;
+}
+
+.bands-section h1::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(to right, var(--rosa), var(--azul-claro));
+    margin: 1rem auto;
+}
+
+.bands-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.band-card {
+    background: var(--preto);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--azul);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.band-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(247, 37, 133, 0.2);
+}
+
+.band-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.band-info {
+    padding: 1.5rem;
+}
+
+.band-info h2 {
+    color: var(--rosa);
+    margin-bottom: 0.5rem;
+}
+
+.genre {
+    color: var(--azul-claro);
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.description {
+    color: var(--cinza);
+    margin-bottom: 1.5rem;
+}
+
+.discography h3 {
+    color: var(--branco);
+    margin-bottom: 0.5rem;
+}
+
+.discography ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.discography li {
+    color: var(--cinza);
+    padding: 0.3rem 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .bands-grid {
+        grid-template-columns: 1fr;
+    }
+}

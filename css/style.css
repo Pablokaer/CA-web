@@ -12,6 +12,7 @@
     --cinza: #a0a0a0;
   }
   
+  
   * {
     margin: 0;
     padding: 0;
@@ -19,10 +20,36 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   
+  /* ===== FUNDO PARALLAX ===== */
   body {
-    background-color: var(--preto);
+    background: 
+      linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
+      url('img/header-bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    background-attachment: fixed;
     color: var(--branco);
     line-height: 1.6;
+    min-height: 100vh;
+    position: relative;
+  }
+  
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('img/header-bg.jpg') no-repeat center center;
+    background-size: cover;
+    z-index: -1;
+    background-attachment: fixed;
+    animation: parallax 20s linear infinite alternate;
+  }
+  
+  @keyframes parallax {
+    0% { transform: scale(1) translateY(0); }
+    100% { transform: scale(1.05) translateY(-50px); }
   }
   
   /* ===== NAVBAR ===== */
@@ -85,6 +112,11 @@
     width: 100%;
   }
   
+  .menu a.active {
+    color: var(--rosa);
+    font-weight: bold;
+  }
+  
   /* ===== HEADER/BANNER ===== */
   header {
     height: 100vh;
@@ -95,8 +127,6 @@
     text-align: center;
     padding: 0 5%;
     margin-top: 70px;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                url('img/header-bg.jpg') no-repeat center center/cover;
   }
   
   .titulo {
@@ -117,17 +147,29 @@
     100% { transform: scale(1); }
   }
   
-/* ===== RABBITS SECTION - LAYOUT 2X2 CORRIGIDO ===== */
-.rabbits {
+  /* ===== SEÇÕES COMUNS ===== */
+  section {
     padding: 5rem 5%;
-    background-color: #1e1e1e;
+    position: relative;
+  }
+  
+  .subtitle {
+    text-align: center;
+    color: var(--cinza);
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+  }
+  
+  /* ===== RABBITS SECTION ===== */
+  .rabbits {
+    background-color: var(--preto-claro);
   }
   
   .rabbits h1 {
     font-size: 2.5rem;
     text-align: center;
     margin-bottom: 3rem;
-    color: white;
+    color: var(--branco);
     position: relative;
   }
   
@@ -136,11 +178,10 @@
     display: block;
     width: 100px;
     height: 4px;
-    background: linear-gradient(to right, #f72585, #3a0ca3);
+    background: linear-gradient(to right, var(--rosa), var(--azul-claro));
     margin: 1rem auto;
   }
   
-  /* Grid 2x2 */
   .rabbits-group {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -149,9 +190,8 @@
     margin: 0 auto;
   }
   
-  /* Cards - Estrutura corrigida */
   .card-rabbit {
-    background: #121212;
+    background: var(--preto);
     border-radius: 10px;
     overflow: hidden;
     transition: all 0.3s ease;
@@ -160,30 +200,26 @@
     flex-direction: column;
   }
   
-  .card-content {
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-  }
-  
   .card-rabbit img {
     width: 100%;
     height: 250px;
     object-fit: cover;
-    border-bottom: 3px solid #3a0ca3;
+    border-bottom: 3px solid var(--azul);
+  }
+  
+  .card-rabbit > div {
+    padding: 1.5rem;
   }
   
   .card-rabbit span {
-    color: #f72585;
+    color: var(--rosa);
     font-weight: 600;
     font-size: 1.2rem;
   }
   
   .card-rabbit p {
-    color: #a0a0a0;
+    color: var(--cinza);
     margin: 1rem 0;
-    flex-grow: 1;
   }
   
   .valor {
@@ -194,19 +230,19 @@
   }
   
   .valor h3 {
-    color: white;
+    color: var(--branco);
     font-size: 1.2rem;
   }
   
   .valor span {
-    color: #a0a0a0;
+    color: var(--cinza);
     text-decoration: line-through;
     font-size: 0.9rem;
   }
   
   .card-rabbit button {
-    background: #3a0ca3;
-    color: white;
+    background: var(--azul);
+    color: var(--branco);
     border: none;
     padding: 0.8rem;
     border-radius: 5px;
@@ -215,38 +251,23 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: all 0.3s ease;
-    margin-top: auto;
+    width: 100%;
+    margin-top: 1rem;
   }
   
   .card-rabbit:hover {
     transform: translateY(-10px);
     box-shadow: 0 10px 20px rgba(247, 37, 133, 0.2);
-    border-color: #3a0ca3;
+    border-color: var(--azul);
   }
   
   .card-rabbit:hover button {
-    background: #f72585;
-  }
-  
-  /* Responsivo */
-  @media (max-width: 768px) {
-    .rabbits-group {
-      grid-template-columns: 1fr;
-    }
+    background: var(--rosa);
   }
   
   /* ===== AVALIAÇÕES ===== */
-.Avaliacoes {
-    padding: 5rem 5%;
+  .Avaliacoes {
     background-color: var(--preto);
-    position: relative;
-  }
-  
-  .Avaliacoes h1 {
-    font-size: 2.5rem;
-    text-align: center;
-    margin-bottom: 3rem;
-    color: var(--branco);
   }
   
   .carrossel {
@@ -312,6 +333,191 @@
   .anterior:hover, .posterior:hover {
     background-color: var(--azul-claro);
     transform: translateY(-50%) scale(1.1);
+  }
+  
+  /* ===== BANDS PAGE ===== */
+  .bands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  .band-card {
+    background: var(--preto);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--azul);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .band-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(247, 37, 133, 0.2);
+  }
+  
+  .band-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .band-info {
+    padding: 1.5rem;
+  }
+  
+  .band-info h2 {
+    color: var(--rosa);
+    margin-bottom: 0.5rem;
+  }
+  
+  .genre {
+    color: var(--azul-claro);
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .description {
+    color: var(--cinza);
+    margin-bottom: 1.5rem;
+  }
+  
+  .discography h3 {
+    color: var(--branco);
+    margin-bottom: 0.5rem;
+  }
+  
+  .discography ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .discography li {
+    color: var(--cinza);
+    padding: 0.3rem 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+  }
+  
+  /* ===== SONGS PAGE ===== */
+  .difficulty-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .tab-button {
+    padding: 0.5rem 1.5rem;
+    background: var(--preto);
+    border: 1px solid var(--azul);
+    color: var(--branco);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .tab-button.active {
+    background: var(--rosa);
+    border-color: var(--rosa);
+    color: var(--preto);
+  }
+  
+  .songs-list {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .song-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: rgba(30, 30, 30, 0.7);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
+  
+  .song-card:hover {
+    background: rgba(58, 12, 163, 0.2);
+    transform: translateX(10px);
+  }
+  
+  .song-info h3 {
+    color: var(--branco);
+    margin-bottom: 0.3rem;
+  }
+  
+  .artist {
+    color: var(--cinza);
+    font-size: 0.9rem;
+  }
+  
+  .difficulty {
+    padding: 0.3rem 0.8rem;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 0.8rem;
+  }
+  
+  .difficulty.easy {
+    background: rgba(0, 200, 0, 0.2);
+    color: #00ff00;
+  }
+  
+  .difficulty.medium {
+    background: rgba(255, 165, 0, 0.2);
+    color: orange;
+  }
+  
+  .difficulty.hard {
+    background: rgba(255, 0, 0, 0.2);
+    color: red;
+  }
+  
+  /* ===== ABOUT US PAGE ===== */
+  .about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .about-us h1 {
+    margin-top: 30px;
+  }
+
+  
+  .about-text {
+    margin-top: -180px;
+    color: var(--cinza);
+    line-height: 1.6;
+  }
+
+
+  .about-text h2 {
+    color: var(--branco);
+    margin: 1.5rem 0 1rem;
+    font-size: 1.5rem;
+  }
+  
+  .about-text ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+  
+  .about-text li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .about-image img {
+    margin-top: -20px;
+    width: 100%;
+    border-radius: 10px;
+    border: 3px solid var(--azul);
+    box-shadow: 0 0 20px rgba(58, 12, 163, 0.5);
   }
   
   /* ===== FOOTER ===== */
@@ -429,112 +635,8 @@
     color: var(--cinza);
     font-size: 0.8rem;
   }
-   /* ===== ABOUT US PAGE ===== */
-.about-us {
-    padding: 5rem 5%;
-    background-color: var(--preto-claro);
-    min-height: calc(100vh - 70px);
-    margin-top: 70px;
-}
-
-.about-container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.about-us h1 {
-    font-size: 2.5rem;
-    color: var(--branco);
-    margin-bottom: 2rem;
-    text-align: center;
-}
-
-.about-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
-}
-
-.about-text {
-    color: var(--cinza);
-    line-height: 1.6;
-}
-
-.about-text h2 {
-    color: var(--rosa);
-    margin: 1.5rem 0 1rem;
-    font-size: 1.5rem;
-}
-
-.about-text ul {
-    margin: 1rem 0;
-    padding-left: 1.5rem;
-}
-
-.about-text li {
-    margin-bottom: 0.5rem;
-}
-
-.about-image img {
-    width: 100%;
-    border-radius: 10px;
-    border: 3px solid var(--azul);
-    box-shadow: 0 0 20px rgba(58, 12, 163, 0.5);
-}
-
-
-
-/* ===== FUNDO PARALLAX ===== */
-body {
-    /* Imagem de fundo principal */
-    background: 
-      linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), /* Camada escura para melhor contraste */
-      url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
-    background-size: cover;
-    background-attachment: fixed;
-    position: relative;
-    min-height: 100vh;
-  }
   
-  /* Camada extra para o efeito parallax (opcional) */
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('caminho/para/sua-imagem.jpg') no-repeat center center;
-    background-size: cover;
-    z-index: -1;
-    background-attachment: fixed;
-    animation: parallax 20s linear infinite alternate;
-  }
   
-  @keyframes parallax {
-    0% {
-      transform: scale(1) translateY(0);
-    }
-    100% {
-      transform: scale(1.05) translateY(-50px);
-    }
-  }
-
-
-
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .about-content {
-        grid-template-columns: 1fr;
-    }
-    
-    .about-image {
-        order: -1;
-    }
-}
-
   /* ===== RESPONSIVIDADE ===== */
   @media (max-width: 768px) {
     .menu {
@@ -545,12 +647,20 @@ body {
       font-size: 2.5rem;
     }
     
-    .rabbits.group {
+    .rabbits-group, .bands-grid {
       grid-template-columns: 1fr;
     }
     
     .carrossel {
       padding: 0 2rem;
+    }
+    
+    .about-content {
+      grid-template-columns: 1fr;
+    }
+    
+    .about-image {
+      order: -1;
     }
   }
   
@@ -574,5 +684,3 @@ body {
       grid-template-columns: 1fr;
     }
   }
-
- 

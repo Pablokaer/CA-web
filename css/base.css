@@ -1,0 +1,251 @@
+/* ===== BASE STYLES ===== */
+:root {
+    --preto: #121212;
+    --preto-claro: #1e1e1e;
+    --vermelho: #e63946;
+    --vermelho-escuro: #c1121f;
+    --azul: #1a237e;
+    --azul-claro: #3a0ca3;
+    --roxo: #7209b7;
+    --rosa: #f72585;
+    --branco: #ffffff;
+    --cinza: #a0a0a0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: 
+        linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
+        url('img/header-bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    background-attachment: fixed;
+    color: var(--branco);
+    line-height: 1.6;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('img/header-bg.jpg') no-repeat center center;
+    background-size: cover;
+    z-index: -1;
+    background-attachment: fixed;
+    animation: parallax 20s linear infinite alternate;
+}
+
+@keyframes parallax {
+    0% { transform: scale(1) translateY(0); }
+    100% { transform: scale(1.05) translateY(-50px); }
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    background-color: rgba(18, 18, 18, 0.9);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--azul);
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--branco);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: linear-gradient(to right, var(--rosa), var(--azul-claro));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.menu {
+    display: flex;
+    gap: 2rem;
+}
+
+.menu a {
+    color: var(--cinza);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.menu a:hover {
+    color: var(--branco);
+}
+
+.menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--rosa);
+    transition: width 0.3s ease;
+}
+
+.menu a:hover::after {
+    width: 100%;
+}
+
+.menu a.active {
+    color: var(--rosa);
+    font-weight: bold;
+}
+
+footer {
+    background-color: var(--preto-claro);
+    padding: 5rem 5% 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    border-top: 1px solid rgba(58, 12, 163, 0.3);
+}
+
+.empresa .logo {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.empresa p {
+    margin-bottom: 1rem;
+    color: var(--cinza);
+}
+
+.empresa span {
+    color: var(--branco);
+    font-weight: 600;
+}
+
+.parceiros h3, .Newsletter h3 {
+    color: var(--branco);
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.parceiros h3::after, .Newsletter h3::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(to right, var(--rosa), var(--azul-claro));
+    margin-top: 0.5rem;
+}
+
+.parceiros p {
+    margin-bottom: 0.8rem;
+    color: var(--cinza);
+}
+
+.input-group {
+    display: flex;
+    margin-bottom: 2rem;
+}
+
+.input-group input {
+    flex: 1;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 50px 0 0 50px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--branco);
+}
+
+.input-group input::placeholder {
+    color: var(--cinza);
+}
+
+.input-group button {
+    padding: 0 1.5rem;
+    border: none;
+    border-radius: 0 50px 50px 0;
+    background-color: var(--azul);
+    color: var(--branco);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.input-group button:hover {
+    background-color: var(--azul-claro);
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin: 1.5rem 0;
+}
+
+.rede-social {
+    display: flex;
+    gap: 1rem;
+}
+
+.rede-social i {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.rede-social i:hover {
+    background-color: var(--azul);
+    transform: translateY(-5px);
+}
+
+.rodape {
+    background-color: var(--preto);
+    padding: 1rem;
+    text-align: center;
+    color: var(--cinza);
+    font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+    .menu {
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    nav {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    
+    .menu {
+        margin-top: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    footer {
+        grid-template-columns: 1fr;
+    }
+}

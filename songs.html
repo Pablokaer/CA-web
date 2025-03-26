@@ -1,55 +1,130 @@
-// Cria notas musicais que sobem aleatoriamente na tela
-function createMusicNotes() {
-  const notes = ['♪', '♫', '♩', '♬'];
-  const note = document.createElement('div');
-  note.textContent = notes[Math.floor(Math.random() * notes.length)];
-  note.style.position = 'fixed';
-  note.style.left = Math.random() * 100 + 'vw';
-  note.style.bottom = '0';
-  note.style.fontSize = (Math.random() * 20 + 10) + 'px';
-  note.style.color = `hsl(${Math.random() * 360}, 100%, 70%)`;
-  note.style.opacity = '0.7';
-  note.style.zIndex = '1000';
-  note.style.pointerEvents = 'none';
-  note.style.transition = 'all 2s linear';
-  
-  document.body.appendChild(note);
-  
-  setTimeout(() => {
-    note.style.bottom = '100vh';
-    note.style.opacity = '0';
-  }, 10);
-  
-  setTimeout(() => note.remove(), 2000);
-}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Músicas | Guitar Rabbit</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/songs.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <!-- Barra de navegação -->
+    <nav>
+        <div class="logo">Guitar Rabbit</div>
+        <div class="menu">
+            <a href="index.html">home</a>
+            <a href="about.html" class="active">about us</a>
+            <a href="songs.html" class="active">songs</a>
+            <a href="rabbits.html" class="active">rabbits</a>
+            <a href="bands.html" class="active">bands</a>
+        </div>
+    </nav>
 
-// Cria notas periodicamente
-setInterval(createMusicNotes, 300);
+    <!-- Conteúdo principal -->
+    <section class="songs-section">
+        <h1>Setlist do Guitar Rabbit</h1>
+        
+        <div class="difficulty-tabs">
+            <button class="tab-button active" data-difficulty="all">Todas</button>
+            <button class="tab-button" data-difficulty="easy">Fácil</button>
+            <button class="tab-button" data-difficulty="medium">Médio</button>
+            <button class="tab-button" data-difficulty="hard">Difícil</button>
+        </div>
+        
+        <div class="songs-list">
+            <!-- Lista completa de músicas -->
+            <div class="song-card" data-difficulty="hard">
+                <div class="song-info">
+                    <h3>Smoke on the Warren</h3>
+                    <p class="artist">Deep Purple</p>
+                </div>
+                <span class="difficulty hard">Difícil</span>
+            </div>
+            
+            <div class="song-card" data-difficulty="medium">
+                <div class="song-info">
+                    <h3>Iron Hare</h3>
+                    <p class="artist">Black Sabbath</p>
+                </div>
+                <span class="difficulty medium">Médio</span>
+            </div>
+            
+            <div class="song-card" data-difficulty="easy">
+                <div class="song-info">
+                    <h3>Ziggy Bun-dust</h3>
+                    <p class="artist">David Bowie</p>
+                </div>
+                <span class="difficulty easy">Fácil</span>
+            </div>
+            
+            <!-- Continuação da lista (adicione todas as outras músicas) -->
+            <div class="song-card" data-difficulty="hard">
+                <div class="song-info">
+                    <h3>Killer Bunny</h3>
+                    <p class="artist">Queen</p>
+                </div>
+                <span class="difficulty hard">Difícil</span>
+            </div>
+            
+            <div class="song-card" data-difficulty="medium">
+                <div class="song-info">
+                    <h3>Bark at the Moonbutt</h3>
+                    <p class="artist">Ozzy Osbourne</p>
+                </div>
+                <span class="difficulty medium">Médio</span>
+            </div>
+            
+            <!-- Adicione todas as outras músicas seguindo o mesmo padrão -->
+            <!-- ... -->
+            
+            <div class="song-card" data-difficulty="hard">
+                <div class="song-info">
+                    <h3>Bohemian Hop-sody</h3>
+                    <p class="artist">Queen</p>
+                </div>
+                <span class="difficulty hard">Difícil</span>
+            </div>
+        </div>
+    </section>
 
-// Fundo que reage ao áudio (Web Audio API)
-function initAudioVisualizer() {
-  const canvas = document.getElementById('visualizer');
-  const ctx = canvas.getContext('2d');
-  const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-  const analyser = audioCtx.createAnalyser();
-  
-  navigator.mediaDevices.getUserMedia({ audio: true })
-    .then(stream => {
-      const source = audioCtx.createMediaStreamSource(stream);
-      source.connect(analyser);
-      visualize();
-    });
-  
-  function visualize() {
-    const bufferLength = analyser.frequencyBinCount;
-    const dataArray = new Uint8Array(bufferLength);
-    
-    function draw() {
-      requestAnimationFrame(draw);
-      analyser.getByteFrequencyData(dataArray);
-      
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      
-      const barWidth = (canvas.width /
-      
+    <!-- Rodapé -->
+    <footer>
+        <div class="footer-content">
+            <p>Guitar Rabbit &copy; 2023 - Todos os direitos reservados</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Filtro por dificuldade
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove classe active de todos os botões
+                document.querySelectorAll('.tab-button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Adiciona classe active ao botão clicado
+                button.classList.add('active');
+                
+                const difficulty = button.dataset.difficulty;
+                const songs = document.querySelectorAll('.song-card');
+                
+                songs.forEach(song => {
+                    if(difficulty === 'all' || song.dataset.difficulty === difficulty) {
+                        song.style.display = 'flex';
+                    } else {
+                        song.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
