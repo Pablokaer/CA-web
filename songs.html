@@ -1,0 +1,55 @@
+// Cria notas musicais que sobem aleatoriamente na tela
+function createMusicNotes() {
+  const notes = ['♪', '♫', '♩', '♬'];
+  const note = document.createElement('div');
+  note.textContent = notes[Math.floor(Math.random() * notes.length)];
+  note.style.position = 'fixed';
+  note.style.left = Math.random() * 100 + 'vw';
+  note.style.bottom = '0';
+  note.style.fontSize = (Math.random() * 20 + 10) + 'px';
+  note.style.color = `hsl(${Math.random() * 360}, 100%, 70%)`;
+  note.style.opacity = '0.7';
+  note.style.zIndex = '1000';
+  note.style.pointerEvents = 'none';
+  note.style.transition = 'all 2s linear';
+  
+  document.body.appendChild(note);
+  
+  setTimeout(() => {
+    note.style.bottom = '100vh';
+    note.style.opacity = '0';
+  }, 10);
+  
+  setTimeout(() => note.remove(), 2000);
+}
+
+// Cria notas periodicamente
+setInterval(createMusicNotes, 300);
+
+// Fundo que reage ao áudio (Web Audio API)
+function initAudioVisualizer() {
+  const canvas = document.getElementById('visualizer');
+  const ctx = canvas.getContext('2d');
+  const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  const analyser = audioCtx.createAnalyser();
+  
+  navigator.mediaDevices.getUserMedia({ audio: true })
+    .then(stream => {
+      const source = audioCtx.createMediaStreamSource(stream);
+      source.connect(analyser);
+      visualize();
+    });
+  
+  function visualize() {
+    const bufferLength = analyser.frequencyBinCount;
+    const dataArray = new Uint8Array(bufferLength);
+    
+    function draw() {
+      requestAnimationFrame(draw);
+      analyser.getByteFrequencyData(dataArray);
+      
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      const barWidth = (canvas.width /
+      
