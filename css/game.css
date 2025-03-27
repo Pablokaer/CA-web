@@ -1,0 +1,46 @@
+/* ===== SIMPLIFIED RABBITS PAGE STYLES ===== */
+.rabbits-section {
+    padding: 3rem 5%;
+    background-color: var(--preto-claro);
+}
+
+.rabbits-section h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--branco);
+}
+
+.rabbits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.rabbit-card {
+    background: var(--preto);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(58, 12, 163, 0.3);
+    aspect-ratio: 1/1; /* Makes cards square */
+}
+
+.rabbit-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Shows entire image */
+    background: #000; /* Background for images with transparency */
+}
+
+.rabbit-info {
+    display: none; /* Hiding text info as requested */
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .rabbits-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}

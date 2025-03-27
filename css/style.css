@@ -23,33 +23,13 @@
   /* ===== FUNDO PARALLAX ===== */
   body {
     background: 
-      linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
-      url('img/header-bg.jpg') no-repeat center center fixed;
+      linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85));
     background-size: cover;
     background-attachment: fixed;
     color: var(--branco);
     line-height: 1.6;
     min-height: 100vh;
     position: relative;
-  }
-  
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('img/header-bg.jpg') no-repeat center center;
-    background-size: cover;
-    z-index: -1;
-    background-attachment: fixed;
-    animation: parallax 20s linear infinite alternate;
-  }
-  
-  @keyframes parallax {
-    0% { transform: scale(1) translateY(0); }
-    100% { transform: scale(1.05) translateY(-50px); }
   }
   
   /* ===== NAVBAR ===== */
@@ -407,148 +387,7 @@
   transform: translateY(-50%) scale(1.1);
 }
   
-  /* ===== BANDS PAGE ===== */
-  .bands-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-  
-  .band-card {
-    background: var(--preto);
-    border-radius: 10px;
-    overflow: hidden;
-    border: 1px solid var(--azul);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .band-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(247, 37, 133, 0.2);
-  }
-  
-  .band-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-  }
-  
-  .band-info {
-    padding: 1.5rem;
-  }
-  
-  .band-info h2 {
-    color: var(--rosa);
-    margin-bottom: 0.5rem;
-  }
-  
-  .genre {
-    color: var(--azul-claro);
-    font-weight: bold;
-    margin-bottom: 1rem;
-  }
-  
-  .description {
-    color: var(--cinza);
-    margin-bottom: 1.5rem;
-  }
-  
-  .discography h3 {
-    color: var(--branco);
-    margin-bottom: 0.5rem;
-  }
-  
-  .discography ul {
-    list-style-type: none;
-    padding-left: 0;
-  }
-  
-  .discography li {
-    color: var(--cinza);
-    padding: 0.3rem 0;
-    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
-  }
-  
-  /* ===== SONGS PAGE ===== */
-  .difficulty-tabs {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-  }
-  
-  .tab-button {
-    padding: 0.5rem 1.5rem;
-    background: var(--preto);
-    border: 1px solid var(--azul);
-    color: var(--branco);
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .tab-button.active {
-    background: var(--rosa);
-    border-color: var(--rosa);
-    color: var(--preto);
-  }
-  
-  .songs-list {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .song-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    background: rgba(30, 30, 30, 0.7);
-    border-radius: 5px;
-    transition: all 0.3s ease;
-  }
-  
-  .song-card:hover {
-    background: rgba(58, 12, 163, 0.2);
-    transform: translateX(10px);
-  }
-  
-  .song-info h3 {
-    color: var(--branco);
-    margin-bottom: 0.3rem;
-  }
-  
-  .artist {
-    color: var(--cinza);
-    font-size: 0.9rem;
-  }
-  
-  .difficulty {
-    padding: 0.3rem 0.8rem;
-    border-radius: 50px;
-    font-weight: bold;
-    font-size: 0.8rem;
-  }
-  
-  .difficulty.easy {
-    background: rgba(0, 200, 0, 0.2);
-    color: #00ff00;
-  }
-  
-  .difficulty.medium {
-    background: rgba(255, 165, 0, 0.2);
-    color: orange;
-  }
-  
-  .difficulty.hard {
-    background: rgba(255, 0, 0, 0.2);
-    color: red;
-  }
-  
+
   /* ===== ABOUT US PAGE ===== */
   .about-content {
     display: grid;
@@ -708,19 +547,40 @@
     font-size: 0.8rem;
   }
   
-  
+
+
  /* ===== RESPONSIVIDADE ===== */
 
 @media (max-width: 992px) {
   /* Estilos para tablets grandes */
   .carrossel {
-      max-width: 90%;
-  }
-  
-  .players {
-      padding: 1.5rem;
-  }
+    padding: 0 1rem;
 }
+
+.players {
+    padding: 1rem;
+}
+
+.players p:first-of-type {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.players p:last-of-type {
+    font-size: 0.9rem;
+}
+
+.anterior, .posterior {
+    width: 10px;
+    height: 10px;
+}
+
+.carrossel-indicadores .indicador {
+    width: 10px;
+    height: 10px;
+}
+}
+
 
 @media (max-width: 768px) {
   /* Estilos para tablets */
@@ -769,17 +629,31 @@
 @media (max-width: 576px) {
   /* Estilos para celulares grandes */
   .carrossel {
-      padding: 0 1.5rem;
-  }
-  
-  .players {
-      margin: 0;
-      padding: 1.2rem;
-  }
-  
-  .carrossel-indicadores {
-      margin-top: 20px;
-  }
+    padding: 0 1rem;
+}
+
+.players {
+    padding: 1rem;
+}
+
+.players p:first-of-type {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.players p:last-of-type {
+    font-size: 0.9rem;
+}
+
+.anterior, .posterior {
+    width: 10px;
+    height: 10px;
+}
+
+.carrossel-indicadores .indicador {
+    width: 10px;
+    height: 10px;
+}
 }
 
 @media (max-width: 480px) {
