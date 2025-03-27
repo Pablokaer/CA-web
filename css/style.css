@@ -172,6 +172,13 @@
     color: var(--branco);
     position: relative;
   }
+  .bands h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--branco);
+    position: relative;
+  }
   
   .rabbits h1::after {
     content: '';
@@ -265,75 +272,140 @@
     background: var(--rosa);
   }
   
-  /* ===== AVALIAÇÕES ===== */
-  .Avaliacoes {
-    background-color: var(--preto);
-  }
+/* ===== AVALIAÇÕES ===== */
+.Avaliacoes {
+  background-color: var(--preto);
+  padding: 4rem 0;
+}
+
+.Avaliacoes h1 {
+  text-align: center;
+  margin-bottom: 70px;
+  color: var(--branco);
+}
+
+.carrossel {
+  position: relative;
+  padding: 0 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.carrossel-container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  min-height: 300px;
+}
+
+.players {
+  position: absolute;
   
-  .carrossel {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-    overflow: hidden;
-  }
-  
-  .players {
-    background-color: var(--preto-claro);
-    padding: 2rem;
-    border-radius: 10px;
-    text-align: center;
-    margin: 0 1rem;
-    border: 1px solid rgba(58, 12, 163, 0.3);
-  }
-  
-  .players p:first-of-type {
-    font-style: italic;
-    margin-bottom: 1.5rem;
-    color: var(--cinza);
-  }
-  
-  .players img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid var(--azul);
-    margin-bottom: 1rem;
-  }
-  
-  .players p:last-of-type span {
-    color: var(--rosa);
-    font-weight: 600;
-  }
-  
-  .anterior, .posterior {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: var(--azul);
-    color: var(--branco);
-    border: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 1.2rem;
-    z-index: 10;
-    transition: all 0.3s ease;
-  }
-  
-  .anterior {
-    left: 10px;
-  }
-  
-  .posterior {
-    right: 10px;
-  }
-  
-  .anterior:hover, .posterior:hover {
-    background-color: var(--azul-claro);
-    transform: translateY(-50%) scale(1.1);
-  }
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto;
+  height: 50%;
+  left: 1rem;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  background-color: var(--preto-claro);
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  border: 1px solid rgba(58, 12, 163, 0.3);
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.players.ativo {
+  opacity: 1;
+  position: relative;
+  pointer-events: auto;
+  left: auto;
+}
+
+.players p:first-of-type {
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  color: var(--cinza);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.players img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--azul);
+  margin-bottom: 1rem;
+}
+
+.players p:last-of-type {
+  color: var(--branco);
+  margin-top: 1rem;
+}
+
+.players p:last-of-type span {
+  color: var(--rosa);
+  font-weight: 600;
+}
+
+/* Indicadores */
+.carrossel-indicadores {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  gap: 10px;
+}
+
+.carrossel-indicadores .indicador {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--cinza);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.carrossel-indicadores .indicador.ativo {
+  background-color: var(--azul);
+  transform: scale(1.2);
+}
+
+/* Botões de navegação */
+.anterior, .posterior {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--azul);
+  color: var(--branco);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  z-index: 10;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.anterior {
+  left: calc(50% - 300px - 30px);
+}
+
+.posterior {
+  right: calc(50% - 300px - 30px);
+}
+
+.anterior:hover, .posterior:hover {
+  background-color: var(--azul-claro);
+  transform: translateY(-50%) scale(1.1);
+}
   
   /* ===== BANDS PAGE ===== */
   .bands-grid {
@@ -637,50 +709,142 @@
   }
   
   
-  /* ===== RESPONSIVIDADE ===== */
-  @media (max-width: 768px) {
-    .menu {
-      gap: 1rem;
-    }
-    
-    .titulo {
-      font-size: 2.5rem;
-    }
-    
-    .rabbits-group, .bands-grid {
-      grid-template-columns: 1fr;
-    }
-    
-    .carrossel {
-      padding: 0 2rem;
-    }
-    
-    .about-content {
-      grid-template-columns: 1fr;
-    }
-    
-    .about-image {
-      order: -1;
-    }
+ /* ===== RESPONSIVIDADE ===== */
+
+@media (max-width: 992px) {
+  /* Estilos para tablets grandes */
+  .carrossel {
+      max-width: 90%;
   }
   
-  @media (max-width: 480px) {
-    nav {
+  .players {
+      padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Estilos para tablets */
+  .menu {
+      gap: 1rem;
+  }
+  
+  .titulo {
+      font-size: 2.5rem;
+  }
+  
+  .rabbits-group, .bands-grid {
+      grid-template-columns: 1fr;
+  }
+  
+  .carrossel {
+      padding: 0 2rem;
+  }
+  
+  .about-content {
+      grid-template-columns: 1fr;
+  }
+  
+  .about-image {
+      order: -1;
+  }
+  
+  /* Ajustes específicos para o carrossel */
+  .players p:first-of-type {
+      font-size: 1rem;
+  }
+  
+  .players img {
+      width: 70px;
+      height: 70px;
+  }
+  
+  .anterior, .posterior {
+      margin-top: -50px;
+      width: 35px;
+      height: 35px;
+      font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Estilos para celulares grandes */
+  .carrossel {
+      padding: 0 1.5rem;
+  }
+  
+  .players {
+      margin: 0;
+      padding: 1.2rem;
+  }
+  
+  .carrossel-indicadores {
+      margin-top: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Estilos para celulares pequenos */
+  nav {
       flex-direction: column;
       padding: 1rem;
-    }
-    
-    .menu {
+  }
+  
+  .menu {
       margin-top: 1rem;
       flex-wrap: wrap;
       justify-content: center;
-    }
-    
-    .titulo {
-      font-size: 2rem;
-    }
-    
-    footer {
-      grid-template-columns: 1fr;
-    }
   }
+  
+  .titulo {
+      font-size: 2rem;
+  }
+  
+  footer {
+      grid-template-columns: 1fr;
+  }
+  
+  /* Ajustes finos para o carrossel em telas muito pequenas */
+  .carrossel {
+      padding: 0 1rem;
+  }
+  
+  .players {
+      padding: 1rem;
+  }
+  
+  .players p:first-of-type {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+  }
+  
+  .players p:last-of-type {
+      font-size: 0.9rem;
+  }
+  
+  .anterior, .posterior {
+      width: 10px;
+      height: 10px;
+  }
+  
+  .carrossel-indicadores .indicador {
+      width: 10px;
+      height: 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  /* Ajustes extras para dispositivos muito pequenos */
+  .carrossel {
+      padding: 0 0.5rem;
+  }
+  
+  .players {
+      padding: 0.8rem;
+  }
+  .anterior {
+    left: 10px;
+  }
+  .posterior {
+    right: 10px;
+  }
+}
