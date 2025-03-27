@@ -140,117 +140,143 @@
     font-size: 1.2rem;
   }
   
-  /* ===== RABBITS SECTION ===== */
-  .rabbits {
-    background-color: var(--preto-claro);
-  }
-  
-  .rabbits h1 {
-    font-size: 2.5rem;
-    text-align: center;
-    margin-bottom: 3rem;
-    color: var(--branco);
-    position: relative;
-  }
-  .bands h1 {
-    font-size: 2.5rem;
-    text-align: center;
-    margin-bottom: 3rem;
-    color: var(--branco);
-    position: relative;
-  }
-  
-  .rabbits h1::after {
-    content: '';
-    display: block;
-    width: 100px;
-    height: 4px;
-    background: linear-gradient(to right, var(--rosa), var(--azul-claro));
-    margin: 1rem auto;
-  }
-  
+/* ===== 2x2 SQUARE RABBIT CARDS WITH TEXT BELOW ===== */
+.rabbits-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Fixed 2 columns */
+  gap: 2rem;
+  max-width: 1000px; /* Adjust based on your preferred card size */
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.card-rabbit {
+  background: var(--preto);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(58, 12, 163, 0.3);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Square image container */
+.card-image-container {
+  width: 100%;
+  aspect-ratio: 1/1; /* Makes image area square */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--preto); /* Background for transparent images */
+}
+
+.card-rabbit img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Shows entire image */
+  padding: 10px; /* Gives images some breathing room */
+  transition: transform 0.3s ease;
+}
+.bands {
+  text-align: center; /* Alinha todo o conteúdo da seção ao centro */
+  padding: 5rem 5%; /* Mantém o padding que você já tinha */
+}
+
+.bands h1 {
+  font-size: 2.5rem;
+  color: var(--branco);
+  position: relative;
+  margin-bottom: 3rem;
+  display: inline-block; /* Permite que o pseudo-elemento abaixo se alinhe corretamente */
+}
+
+.bands h1::after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(to right, var(--rosa), var(--azul-claro));
+  margin: 1rem auto 0; /* Centraliza a linha decorativa */
+}
+
+.card-content {
+  padding: 1.5rem;
+  text-align: center;
+  /*border-top: 3px solid var(--azul);*/
+}
+
+.card-rabbit span {
+  color: var(--rosa);
+  font-weight: 600;
+  font-size: 1.2rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.card-rabbit p {
+  color: var(--cinza);
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+.valor {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+
+.valor h3 {
+  color: var(--branco);
+  font-size: 1.1rem;
+}
+
+.valor span {
+  color: var(--cinza);
+  text-decoration: line-through;
+  font-size: 0.8rem;
+}
+
+.card-rabbit button {
+  background: var(--azul);
+  color: var(--branco);
+  border: none;
+  padding: 0.6rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+}
+
+/* Hover Effects */
+.card-rabbit:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(247, 37, 133, 0.2);
+  border-color: var(--azul);
+}
+
+.card-rabbit:hover img {
+  transform: scale(1.05);
+}
+
+.card-rabbit:hover button {
+  background: var(--rosa);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
   .rabbits-group {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+      grid-template-columns: 1fr; /* Stack on mobile */
+      max-width: 400px;
   }
-  
-  .card-rabbit {
-    background: var(--preto);
-    border-radius: 10px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(58, 12, 163, 0.3);
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .card-rabbit img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-bottom: 3px solid var(--azul);
-  }
-  
-  .card-rabbit > div {
-    padding: 1.5rem;
-  }
-  
-  .card-rabbit span {
-    color: var(--rosa);
-    font-weight: 600;
-    font-size: 1.2rem;
-  }
-  
-  .card-rabbit p {
-    color: var(--cinza);
-    margin: 1rem 0;
-  }
-  
-  .valor {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    margin: 1rem 0;
-  }
-  
-  .valor h3 {
-    color: var(--branco);
-    font-size: 1.2rem;
-  }
-  
-  .valor span {
-    color: var(--cinza);
-    text-decoration: line-through;
-    font-size: 0.9rem;
-  }
-  
-  .card-rabbit button {
-    background: var(--azul);
-    color: var(--branco);
-    border: none;
-    padding: 0.8rem;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    width: 100%;
-    margin-top: 1rem;
-  }
-  
-  .card-rabbit:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(247, 37, 133, 0.2);
-    border-color: var(--azul);
-  }
-  
-  .card-rabbit:hover button {
-    background: var(--rosa);
-  }
+}
   
 /* ===== AVALIAÇÕES ===== */
 .Avaliacoes {
