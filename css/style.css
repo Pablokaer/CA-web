@@ -298,12 +298,12 @@
 }
   
 /* ===== AVALIAÇÕES ===== */
-.Avaliacoes {
+.Reviews {
   background-color: var(--preto);
   padding: 4rem 0;
 }
 
-.Avaliacoes h1 {
+.Reviews h1 {
   text-align: center;
   margin-bottom: 70px;
   color: var(--branco);
@@ -326,7 +326,6 @@
 
 .players {
   position: absolute;
-  
   width: 90%;
   max-width: 600px;
   margin: 0 auto;
