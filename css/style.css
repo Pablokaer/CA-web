@@ -99,12 +99,12 @@
   
   /* ===== HEADER/BANNER ===== */
   .banner {
-    position: relative; /* Permite posicionar elementos filhos absolutamente */
-    height: 100vh;
-    overflow: hidden; /* Garante que a imagem não vaze */
+    position: relative; 
+    height: 50%;
+    overflow: hidden;
     display: flex;
-    align-items: center; /* Centraliza o título verticalmente */
-    justify-content: center; /* Centraliza o título horizontalmente */
+    align-items: center;
+    justify-content: center;
     text-align: center;
 }
 .banner-img {
@@ -164,7 +164,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* Fixed 2 columns */
   gap: 2rem;
-  max-width: 1000px; /* Adjust based on your preferred card size */
+  max-width: 1000px; 
   margin: 0 auto;
   padding: 0 1rem;
 }
