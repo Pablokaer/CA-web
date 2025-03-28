@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
       atualizarCarrossel();
   }
   
-  // Carrossel
+  // Event listeners para os botões
   btnAnterior.addEventListener('click', function() {
       currentIndex = (currentIndex - 1 + totalPlayers) % totalPlayers;
       atualizarCarrossel();
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
       atualizarCarrossel();
   });
   
-  // Running Carrossel
+  // Inicializar carrossel
   players.forEach(player => player.classList.remove('ativo'));
   players[0].classList.add('ativo');
 });
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
 document.querySelectorAll('.btn, button').forEach(button => {
   button.addEventListener('click', () => {
     const audio = new Audio('sounds/click.mp3');
-    audio.volume = 1;
+    audio.volume = 0.3;
     audio.play();
   });
 });

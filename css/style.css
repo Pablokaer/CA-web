@@ -19,6 +19,13 @@
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
+  .jacquard-24-regular {
+    font-family: "Jacquard 24", system-ui;
+    font-size: 100px;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
   
   /* ===== FUNDO PARALLAX ===== */
   body {
@@ -100,7 +107,7 @@
   /* ===== HEADER/BANNER ===== */
   .banner {
     position: relative; 
-    height: 50%;
+    height: 100%;
     overflow: hidden;
     display: flex;
     align-items: center;
